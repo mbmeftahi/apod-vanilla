@@ -7,7 +7,7 @@ var date = randomDate(new Date(1995, 5, 16), new Date());
 var answer="";
 
 var header = document.querySelector('header');
-var image = document.querySelector('img');
+var span = document.querySelector('span');
 var section = document.querySelector('section');
 
 var url = "https://api.nasa.gov/planetary/apod?api_key=" + nasakey + "&date=" + date;
@@ -19,19 +19,34 @@ xhttp.send();
 xhttp.onload = function(){
   var answer = xhttp.response;
   populateHeader(answer);
-  showJson(answer);
+  console.log(answer);
 }
- console.log(answer);
+ 
 
   function populateHeader(jsonObj) {
     var myH1 = document.createElement('h1');
     myH1.textContent = jsonObj['title'];
     header.appendChild(myH1);
 
-    var myImg = document.createElement('p');
-    myImg.textContent = 'This is Image Location.  ' + jsonObj['url'];
-    image.appendChild(myImg);
     
+    let mediatype = jsonObj['media_type'];
+    if ( mediatype == "video" ){
+      // Do Video stuff here...video
+      var myVideo = document.createElement('iframe');
+      let vurl = jsonObj['url'];
+      myVideo.src = (vurl);
+      span.appendChild(myVideo);
+    } else if  ( mediatype == "image" ){
+      // Image rendering...
+      var myImg = document.createElement('img');
+      let iurl = jsonObj['url'];
+      myImg.src = (iurl); 
+      myImg.alt = (iurl);
+      span.appendChild(myImg);
+    } else {
+      console.log(" Unsupported Media type...")
+    }
+
     var myCopyright = document.createElement('p');
     myCopyright.textContent = 'Copyright: ' + jsonObj['copyright'];
     section.appendChild(myCopyright);
@@ -47,7 +62,6 @@ xhttp.onload = function(){
     var myPara = document.createElement('p');
     myPara.textContent = jsonObj['url'];
     section.appendChild(myPara);
-
 
   }
 
@@ -74,6 +88,9 @@ xhttp.onload = function(){
   return `${y}-${m}-${d}`;
   }
 
+ // document.getElementById('btnRandImg').addEventListener('click', function(){
+ //   apod.getRequest();
+ // },);
 
 
 /*  function showJson(jsonObj) {
