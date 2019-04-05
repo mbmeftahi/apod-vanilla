@@ -2,14 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>HTML Starter</title>
+    <title>NASA Astronomy Picture of day - Apod Vanilla</title>
     <base href="./">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/css/main.css" type="text/css">
     <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>HTML Starter</h1>
+      <div>
+          <button id="btnRandApod">Refreash NASA IMAGE</button>
+      </div>
+      <div>
+          <button id="btnvanilla">LOAD IMAGE</button>
+      </div>
+      <header>
+      </header>
+      <img> <a src=" "> Image or Video Goes here.  </a>
+      <section>
+      </section>
+
+
+    
+      <div class="video" id="apodVideo">
+          <iframe frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div>
+        <ul><li id="imgurl"></li></ul>
+      </div>
     <script src="dist/js/main.js"></script>
   </body>
 </html>
