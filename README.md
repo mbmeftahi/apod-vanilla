@@ -1,5 +1,6 @@
 # html-starter
-A starter package for basic HTML projects
+My Plain Java Script starter package for basic HTML projects
+Using below to start.
 
 ```sh
 cd /var/www
